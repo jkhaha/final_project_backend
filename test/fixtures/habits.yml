@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  description: MyString
+  frequency: MyString
+  start_date: 2018-11-21 11:54:58
+  cue: MyString
+  routine: MyString
+  reward: MyString
+
+two:
+  user_id: 1
+  description: MyString
+  frequency: MyString
+  start_date: 2018-11-21 11:54:58
+  cue: MyString
+  routine: MyString
+  reward: MyString
