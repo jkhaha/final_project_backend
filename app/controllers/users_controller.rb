@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:create, :index]
+  # take out index for production so not anyone can see users 
 
   def profile
     render json: { user: UserSerializer.new(current_user) }, status:
@@ -20,7 +21,6 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.create(user_params)
-
     if @user.valid?
       @token = encode_token(user_id: @user.id)
       render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
@@ -28,6 +28,8 @@ class UsersController < ApplicationController
       render json: { error: 'failed to create user'}, status: :not_acceptable
     end
   end
+# creating a new user, make another thing for someone who is logging in
+# can I find someone by this username, do they have this password digest
 
   # PATCH/PUT /users/1
   def update
