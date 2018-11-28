@@ -1,5 +1,6 @@
 class HabitsController < ApplicationController
   before_action :set_habit, only: [:show, :update, :destroy]
+  skip_before_action :authorized
 
   # GET /habits
   def index
@@ -16,7 +17,6 @@ class HabitsController < ApplicationController
   # POST /habits
   def create
     @habit = Habit.new(habit_params)
-
     if @habit.save
       render json: @habit, status: :created, location: @habit
     else
