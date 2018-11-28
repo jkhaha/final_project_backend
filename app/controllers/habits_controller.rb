@@ -1,5 +1,6 @@
 class HabitsController < ApplicationController
-  before_action :set_habit, only: [:show, :update, :destroy]
+  before_action :set_habit, only: [:show, :update, :destroy, :create]
+  skip_before_action :authorized
 
   # GET /habits
   def index

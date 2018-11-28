@@ -2,7 +2,9 @@ class AuthController < ApplicationController
   skip_before_action :authorized, only: [:create, :show]
 # for logging back in
 
-
+def show
+  
+end
 # PUT PERSIST METHOD HERE
   def create
     @user = User.find_by(username: user_login_params[:username])
