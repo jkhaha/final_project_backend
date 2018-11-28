@@ -1,5 +1,5 @@
 class HabitsController < ApplicationController
-  before_action :set_habit, only: [:show, :update, :destroy, :create]
+  before_action :set_habit, only: [:show, :update, :destroy]
   skip_before_action :authorized
 
   # GET /habits
@@ -16,8 +16,8 @@ class HabitsController < ApplicationController
 
   # POST /habits
   def create
+    byebug
     @habit = Habit.new(habit_params)
-
     if @habit.save
       render json: @habit, status: :created, location: @habit
     else
