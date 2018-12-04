@@ -17,7 +17,18 @@ class HabitsController < ApplicationController
   # POST /habits
   def create
     @habit = Habit.new(habit_params)
+
+    javascript_date = params[:habit][:start_date]
+    javascript_date_split = javascript_date.split("/")
+    to_int = javascript_date_split.map{|x| x.to_i}
+    year = to_int[2]
+    day = to_int[1]
+    month = to_int[0]
+    start_date = DateTime.new(year, month, day)
+    @habit.start_date = start_date
+
     if @habit.save
+
       render json: @habit, status: :created, location: @habit
     else
       render json: @habit.errors, status: :unprocessable_entity
@@ -46,6 +57,6 @@ class HabitsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def habit_params
-      params.require(:habit).permit(:user_id, :description, :frequency, :start_date, :cue, :routine, :reward)
+      params.require(:habit).permit(:user_id, :description, :frequency, :cue, :routine, :reward)
     end
 end
