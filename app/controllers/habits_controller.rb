@@ -17,7 +17,6 @@ class HabitsController < ApplicationController
   # POST /habits
   def create
     @habit = Habit.new(habit_params)
-
     javascript_date = params[:habit][:start_date]
     javascript_date_split = javascript_date.split("/")
     to_int = javascript_date_split.map{|x| x.to_i}
