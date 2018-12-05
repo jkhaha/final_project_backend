@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :update, :destroy]
-
+  skip_before_action :authorized
   # GET /entries
   def index
     @entries = Entry.all
