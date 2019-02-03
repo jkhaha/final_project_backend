@@ -3,9 +3,7 @@
 one:
   habit_id: 1
   completed_status: false
-  date_time: 2018-11-21 11:55:41
 
 two:
   habit_id: 1
   completed_status: false
-  date_time: 2018-11-21 11:55:41
